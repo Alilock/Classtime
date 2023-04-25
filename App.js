@@ -1,20 +1,60 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native'
+import React from 'react'
+import Header from './components/Header'
+import Title from './components/Title'
+import Card from './components/Card'
+const App = () => {
 
-export default function App() {
+  const datas = [
+    {
+      title: "Head&Face",
+      diases: 11,
+      color: "red"
+    },
+    {
+      title: "Back&Neck",
+      diases: 9,
+      color: "black"
+    },
+    {
+      title: "Elbow&Shoulders",
+      diases: 12,
+      color: "green"
+    },
+    {
+      title: "hand&Arm",
+      diases: 2,
+      color: "pink"
+    }
+  ]
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <SafeAreaView>
+      <Header />
+      <Title />
+      <View style={styles.cards}>
+        {
+          datas.map(item => (
+            <Card title={item.title} color={item.color} diases={item.diases} />
+          ))
+        }
+      </View>
+
+    </SafeAreaView >
+  )
 }
 
+export default App
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+
+  cards: {
+    marginHorizontal: 16,
+    rowGap: 16
   },
-});
+
+
+}
+)
